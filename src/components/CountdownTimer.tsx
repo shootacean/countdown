@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 import { Stack, Typography, TextField } from '@mui/material';
-import { getDateString, getTimeString } from '../libs/lib';
+import { formatCountdownText, formatDateString, formatTimeString } from '../libs/lib';
 
 const today = new Date();
 
 export type CountdownTimerProps = {}
 
 export const CountdownTimer = ({}: CountdownTimerProps) => {
-    const [date, setDate] = useState(getDateString(today));
-    const [time, setTime] = useState(getTimeString(today));
+    const [date, setDate] = useState(formatDateString(today));
+    const [time, setTime] = useState(formatTimeString(today));
 
     const {
         seconds,
         minutes,
         hours,
+        days,
         pause,
         restart,
     } = useTimer({ expiryTimestamp: new Date(`${date}T${time}:00`), onExpire: () => console.info('onExpire called'), autoStart: false});
@@ -32,8 +33,7 @@ export const CountdownTimer = ({}: CountdownTimerProps) => {
 
     return (
         <>
-            {/* TODO padStart */}
-            <Typography variant='h2'>{hours}:{minutes}:{seconds}</Typography>
+            <Typography variant='h2'>{formatCountdownText(days, hours, minutes, seconds)}</Typography>
             <Stack direction={'row'} spacing={1}>
                 <TextField variant='standard' type='date' value={date} onChange={(e) => {setDate(e.target.value)}}/>
                 <TextField variant='standard' type='time' value={time} onChange={(e) => {setTime(e.target.value)}}/>
