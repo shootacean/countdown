@@ -15,6 +15,7 @@ specifiers:
   jest: ^28.1.1
   jest-environment-jsdom: ^28.1.1
   next: 12.1.6
+  prettier: ^2.6.2
   react: 18.1.0
   react-dom: 18.1.0
   react-timer-hook: ^3.0.5
@@ -41,6 +42,7 @@ devDependencies:
   eslint-config-next: 12.1.6_qwqcuvhue6diaz4jqbkm5dp3pa
   jest: 28.1.1_@types+node@17.0.41
   jest-environment-jsdom: 28.1.1
+  prettier: 2.6.2
   ts-jest: 28.0.4_vz6zla63wvofljfl6elifyg77e
   typescript: 4.7.3
 
@@ -3917,6 +3919,12 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier/2.6.2:
+    resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /pretty-format/27.5.1:

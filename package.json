@@ -7,6 +7,7 @@
     "build": "next build",
     "export": "next build && next export",
     "start": "next start",
+    "format": "prettier --write './src/**/*.{js,jsx,ts,tsx,json}'",
     "lint": "next lint",
     "test": "jest --watch"
   },
@@ -30,6 +31,7 @@
     "eslint-config-next": "12.1.6",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
+    "prettier": "^2.6.2",
     "ts-jest": "^28.0.4",
     "typescript": "4.7.3"
   },
