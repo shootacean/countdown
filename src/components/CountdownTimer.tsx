@@ -20,6 +20,11 @@ export const CountdownTimer = ({}: CountdownTimerProps) => {
     onExpire: () => console.info('onExpire called'),
     autoStart: false,
   });
+  useEffect(() => {
+    // 残り時間をタイトルに表示する
+    // TODO CountdownTimerコンポーネントではなくpagesで更新するように変更する
+    document.title = formatCountdownText(days, hours, minutes, seconds);
+  }, [seconds, minutes, hours, days]);
 
   useEffect(() => {
     if (new Date(`${date}T${time}:00`) <= new Date()) {
