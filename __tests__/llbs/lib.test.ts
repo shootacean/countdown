@@ -2,7 +2,7 @@ import {
   formatDateString,
   formatTimeString,
   formatCountdownText,
-} from '../../src/libs/lib';
+} from '@/libs/lib';
 
 test('Test formatDateString', () => {
   expect(formatDateString(new Date(2022, 6 - 1, 14, 6, 37, 0))).toBe(

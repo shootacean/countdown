@@ -5,7 +5,7 @@ import {
   formatCountdownText,
   formatDateString,
   formatTimeString,
-} from '../libs/lib';
+} from '@/libs/lib';
 
 const today = new Date();
 
@@ -44,6 +44,7 @@ export const CountdownTimer = ({}: CountdownTimerProps) => {
       </Typography>
       <Stack direction={'row'} spacing={1}>
         <TextField
+          name={'date'}
           variant='standard'
           type='date'
           value={date}
@@ -52,6 +53,7 @@ export const CountdownTimer = ({}: CountdownTimerProps) => {
           }}
         />
         <TextField
+          name={'time'}
           variant='standard'
           type='time'
           value={time}
