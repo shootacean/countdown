@@ -27,8 +27,13 @@ export const CountdownTimer = ({}: CountdownTimerProps) => {
 
   const { seconds, minutes, hours, days, pause, restart } = useTimer({
     expiryTimestamp: new Date(`${date}T${time}:00`),
-    // TODO タイマー終了時は通知する
-    onExpire: () => console.info('onExpire called'),
+    // タイマー終了時に通知する
+    onExpire: () => {
+      const notification = new Notification('Countdown', {
+        body: `Times Up! - ${date} ${time}`,
+        tag: 'singleton',
+      });
+    },
     autoStart: false,
   });
 
