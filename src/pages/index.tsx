@@ -5,6 +5,7 @@ import { CountdownTimer } from '@/components/CountdownTimer';
 
 const Home: NextPage = () => {
   useEffect(() => {
+    // TODO ユーザー操作時にリクエストするように変更する
     Notification.requestPermission().then((result) => {
       console.debug('Notification Permission : ', result);
     });

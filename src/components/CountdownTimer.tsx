@@ -7,13 +7,11 @@ import {
   formatTimeString,
 } from '@/libs/lib';
 
-let initDate = new Date();
-
 export type CountdownTimerProps = {};
 
 export const CountdownTimer = ({}: CountdownTimerProps) => {
-  const [date, setDate] = useState(formatDateString(initDate));
-  const [time, setTime] = useState(formatTimeString(initDate));
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
 
   useEffect(() => {
     // 永続化された指定日時を復元する(初回のみ実行)
@@ -22,6 +20,10 @@ export const CountdownTimer = ({}: CountdownTimerProps) => {
     if (persistenceDate && persistenceTime) {
       setDate(persistenceDate);
       setTime(persistenceTime);
+    } else {
+      let today = new Date();
+      setDate(formatDateString(today));
+      setTime(formatTimeString(today));
     }
   }, []);
 
@@ -47,8 +49,7 @@ export const CountdownTimer = ({}: CountdownTimerProps) => {
     if (new Date(`${date}T${time}:00`) <= new Date()) {
       // 過去の日付の場合はタイマーをリセットする
       pause();
-      // FIXME restart()は不要かもしれない
-      // restart(new Date(`${date}T${time}:00`), false);
+      restart(new Date(`${date}T${time}:00`), false);
     } else {
       // 未来の日付ならタイマーを開始する
       restart(new Date(`${date}T${time}:00`), true);
@@ -73,6 +74,7 @@ export const CountdownTimer = ({}: CountdownTimerProps) => {
           onChange={(e) => {
             setDate(e.target.value);
           }}
+          placeholder={'2022-01-01'}
         />
         <TextField
           name={'time'}
@@ -82,6 +84,7 @@ export const CountdownTimer = ({}: CountdownTimerProps) => {
           onChange={(e) => {
             setTime(e.target.value);
           }}
+          placeholder={'12:30'}
         />
       </Stack>
     </>
