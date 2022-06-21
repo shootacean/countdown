@@ -43,7 +43,7 @@ const Home: NextPage = () => {
       sx={{ height: '100vh' }}
     >
       {[...Array(timerCount).keys()].map((n) => (
-        <CountdownTimer key={n} timerId={n} />
+        <CountdownTimer key={n} timerId={n.toString()} />
       ))}
 
       <Button
